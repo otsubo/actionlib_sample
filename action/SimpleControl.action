@@ -1,0 +1,6 @@
+float64[] position
+int32 timeout_sec
+---
+bool conversion
+---
+std_msgs/Float64MultiArray dist

@@ -1,0 +1,16 @@
+<launch>
+  <arg name="model" default="$(find actionlib_sample)/urdf/simple_2dof.urdf"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+
+  <node pkg="actionlib_sample" type="simple_control_node.py" name="simple_control_node"/>
+
+  <node pkg="actionlib_tools" type="axclient.py" name="axclient"
+        args="/control_action_server actionlib_sample/SimpleControlAction"/>
+
+  <node name="rviz"
+        pkg="rviz" type="rviz"
+        args="-d $(find actionlib_sample)/config/sample.rviz">
+  </node>
+</launch>
